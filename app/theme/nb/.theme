@@ -1,0 +1,6 @@
+@name = Tema Pink
+@author = Nabil
+@description= Ini adalah tema pink dari marapi 
+
+#main = index.html
+#content = child.html
