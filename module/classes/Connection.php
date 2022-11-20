@@ -1,19 +1,28 @@
 <?php
+
 namespace classes;
-use PDO, PDOException;
-class CONN {
 
-    public PDO $BD;
-    public function PDO() : PDO {
-        try {
+use PDO;
 
-            return new PDO("mysql:host=localhost;dbname=marapi", 'root');
-            
-        
-        } catch (PDOException $e) {
-        
-            print $e;
-            exit;
+class CONN
+{
+    public function _PDO()
+    {
+        global $DB;
+        /**
+         * @var PDO $DB
+         */
+
+        if (is_file($_SERVER['DOCUMENT_ROOT'] . "/core/connetion/PDO.php")) {
+
+            if(require_once($_SERVER['DOCUMENT_ROOT'] . "/core/connetion/PDO.php"))
+                return $DB;
+            else 
+                echo "unable to call database";
+
+        } else {
+
+            header("Location: /mrp/install/");
         }
     }
 }
